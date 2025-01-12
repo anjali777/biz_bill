@@ -1,0 +1,48 @@
+.invoice-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+    
+  }
+  .tax_invoice{
+    color: blue;
+  }
+  .tax_invoice_to{
+    color: rgb(96, 97, 99);
+  }
+  .invoice_table_details{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+  }
+  .invoice_heading_background{
+    background-color: #bdc7e4; /* Light gray or your preferred color */
+     color: blue;  /* Text color for contrast */
+  }
+
+  .invoice_heading_background th {
+    padding: 10px;
+  }
+  #invoice_information {
+    padding: 2px;
+    margin: 0 auto;
+    max-width: 1600px; /* Adjust width as necessary */
+    box-sizing: border-box;
+  }
+  
+  .invoice_table_details {
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  .invoice_table_details th{
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .invoice-header, .invoice-details, .customer-info, .totals {
+    margin-bottom: 10px;
+  }
+  
+  .create_invoice_link{
+    float: right;
+  }

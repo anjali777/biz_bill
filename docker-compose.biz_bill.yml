@@ -1,0 +1,50 @@
+services:
+  web_biz:
+    build: .
+    image: php:7.4-apache
+    container_name: php-container-biz
+    volumes:
+      - ./test:/var/www/html
+    ports:
+      - "8082:80"  # New port to avoid conflict with existing app
+    depends_on:
+      - db_biz
+
+  db_biz:
+    image: mysql:5.7
+    container_name: mysql-container-biz
+    environment:
+      MYSQL_ROOT_PASSWORD: Biz1234
+      MYSQL_DATABASE: biz_bill_db
+      MYSQL_USER: ajay_biz
+      MYSQL_PASSWORD: ajay_biz
+    ports:
+      - "3307:3306"  # New port for MySQL to avoid conflict
+    volumes:
+      - db_data_biz:/var/lib/mysql
+
+  phpmyadmin_biz:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-container-biz
+    environment:
+      PMA_HOST: db_biz
+      MYSQL_ROOT_PASSWORD: Biz1234
+    ports:
+      - "8083:80"  # New port for phpMyAdmin
+    depends_on:
+      - db_biz
+
+  frontend_biz:
+    container_name: react-container-biz
+    build: ./frontend_biz
+    volumes:
+      - ./frontend_biz:/frontend
+      - /frontend/node_modules
+    ports:
+      - "3001:3000"  # New port for React to avoid conflict
+    stdin_open: true
+    tty: true
+
+volumes:
+  db_data_biz:
+

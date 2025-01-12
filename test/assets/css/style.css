@@ -1,0 +1,129 @@
+body {
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+#employee_schduler_first_table {
+  width: 100%;
+}
+.add_photographer_title {
+  text-align: center;
+  padding: 0 0 1.25em 0; 
+}
+
+.add_photographer_details {
+  text-align: center;
+  padding: 1.25em 0; 
+}
+td {
+  font-size: 0.38em; 
+  font-family: verdana;
+  width: 80px; 
+  border: 1px solid #eee;
+  vertical-align: top;
+  color: #000;
+}
+.first-heading{
+  border: 1px solid #eeeeee;
+}
+.job-header{
+  border: 1px solid #eeeeee;
+}
+.third-heading{
+  border: 1px solid #eeeeee;
+}
+.fourth-heading{
+  border: 1px solid #eeeeee;
+}
+.job-cell.editable-cell {
+  padding: 0 0.125em 0 0.125em; 
+}
+
+#table-heading {
+  text-align: center;
+}
+
+.third_column_content_adjustment, .fourth_column_content_adjustment {
+  overflow-y: scroll;
+ /* height: 17.25em;  Converted from 180px */
+ height: 34.05em;
+}
+
+.photographerBackgroundColor {
+  cursor: pointer;
+}
+
+.first_column {
+  font-weight: bold;
+  font-size: 0.75em; 
+  font-family: verdana;
+  line-height: 0.9375em; 
+  text-align: center;
+  white-space: nowrap;
+}
+#scheduleId {
+  width: 1800px;
+  border: 1px solid #000;
+  margin: 50px 0px 0px 0px;
+}
+
+.job_cells_fixed_height {
+  overflow-y: scroll;
+  height: 34.05em; 
+}
+
+.file_upload_style {
+  margin: 1.625em 0em 0em 1em; 
+}
+
+.heading_center {
+  text-align: center;
+}
+.heading_center_slashes {
+  text-align: center;
+}
+
+.first_job_table_column {
+  width: 10%;
+  border: 1px solid #000000;
+}
+
+.job_numbers_table_column {
+  border: 1px solid #000000;
+  font-family: verdana;
+  color: #000;
+  text-align: center;
+
+}
+
+.employee_names_table_column {
+  width: 10%;
+  border: 1px solid #000000;
+  font-family: verdana; 
+  color: #000000; 
+  padding: 0px 0px 0px 2px;
+}
+
+.employee_job_details {
+  border: 1px solid #000000;
+  font-family: verdana;
+  color: #000000;
+  font-size: 0.7625em;
+  font-weight: 600; 
+}
+/* Extra large screens (e.g., expanded across multiple screens or large monitors) */
+
+@media (min-width: 2100px) {
+
+  td {
+
+    font-size: 0.77em; /* Maximum readability for very large displays */
+
+    font-family: verdana;
+
+    color: #000000;
+
+  }
+
+}
