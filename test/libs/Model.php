@@ -10,10 +10,10 @@ class BaseModel {
         if (!self::$dbInstance) {
             try {
                 // Specify the correct DSN (Data Source Name)
-                $dsn = "mysql:host=db_biz;dbname=biz_bill_db";
+                $dsn = "mysql:host=localhost;port=3306;dbname=ngkproje_bizbill";
 
                 // Create a new PDO instance
-                self::$dbInstance = new PDO($dsn, 'ajay_biz', 'ajay_biz');
+                self::$dbInstance = new PDO($dsn, 'ngkproje_ajay', 'Jaya@1975');
 
                 // Set PDO to throw exceptions on error
                 self::$dbInstance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
