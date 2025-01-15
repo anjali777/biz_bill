@@ -6,7 +6,9 @@ services:
     volumes:
       - ./test:/var/www/html
     ports:
-      - "8082:80"  # New port to avoid conflict with existing app
+      - "80:80"  # Map live domain to container's Apache server
+    environment:
+      VIRTUAL_HOST: bizbill.4asolutions.com.au
     depends_on:
       - db_biz
 
@@ -14,25 +16,14 @@ services:
     image: mysql:5.7
     container_name: mysql-container-biz
     environment:
-      MYSQL_ROOT_PASSWORD: Biz1234
-      MYSQL_DATABASE: biz_bill_db
-      MYSQL_USER: ajay_biz
-      MYSQL_PASSWORD: ajay_biz
+      MYSQL_ROOT_PASSWORD: Jaya@1975
+      MYSQL_DATABASE: ngkproje_bizbill
+      MYSQL_USER: ngkproje_ajay
+      MYSQL_PASSWORD: Jaya@1975
     ports:
-      - "3307:3306"  # New port for MySQL to avoid conflict
+      - "3306:3306"  # Match cPanel's default MySQL port
     volumes:
       - db_data_biz:/var/lib/mysql
-
-  phpmyadmin_biz:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-container-biz
-    environment:
-      PMA_HOST: db_biz
-      MYSQL_ROOT_PASSWORD: Biz1234
-    ports:
-      - "8083:80"  # New port for phpMyAdmin
-    depends_on:
-      - db_biz
 
   frontend_biz:
     container_name: react-container-biz
@@ -41,10 +32,11 @@ services:
       - ./frontend_biz:/frontend
       - /frontend/node_modules
     ports:
-      - "3001:3000"  # New port for React to avoid conflict
+      - "3000:3000"  # React app on standard live port
     stdin_open: true
     tty: true
+    environment:
+      REACT_APP_API_URL: "https://bizbill.4asolutions.com.au"  # Updated API URL
 
 volumes:
   db_data_biz:
-
