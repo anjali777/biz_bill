@@ -17,7 +17,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8082/users/register_user', {
+      const response = await fetch('https://bizbill.4asolutions.com.au/users/register_user', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -45,7 +45,7 @@ const Register = () => {
       {/* Link to Login Page */}
       <div class="login_link">
         <p>Already have an account?</p>
-        <a href="http://localhost:3001/users/login_user">Login</a>
+        <a href="https://bizbill.4asolutions.com.au/users/login_user">Login</a>
       </div>
     </div>
   );
