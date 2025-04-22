@@ -23,7 +23,7 @@ const CreateService = () => {
   }, []);
 
   const fetchServices = async () => {
-    const response = await axios.get('http://localhost:8082/service/get_services');
+    const response = await axios.get('https://bizbill.4asolutions.com.au/service/get_services');
     setServices(response.data);
   };
 
@@ -38,7 +38,7 @@ const CreateService = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editMode) {
-      await axios.put(`http://localhost:8082/service/update_service/${editingServiceId}`, formData);
+      await axios.put(`https://bizbill.4asolutions.com.au/service/update_service/${editingServiceId}`, formData);
       setEditMode(false);
       seteditingServiceId(null);
     } else {
