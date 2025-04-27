@@ -17,14 +17,19 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://bizbill.4asolutions.com.au/users/register_user', {
+      const response = await fetch('/users/register_user', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-      alert(result.message);
-      window.location.href = '/users/login_user'; // Perform frontend redirect
+      
+      if (result.success) {
+        alert('Registration successful! Please log in.');
+        window.location.href = '/login'; // Redirect to frontend login page
+      } else {
+        alert(result.message || 'Registration failed.');
+      }
     } catch (error) {
       console.error('Error during registration:', error);
       alert('Registration failed.');
@@ -32,8 +37,8 @@ const Register = () => {
   };
 
   return (
-    <div class="register_form_div">
-      <form class="register_form" onSubmit={handleSubmit}>
+    <div className="register_form_div">
+      <form className="register_form" onSubmit={handleSubmit}>
         <h2>Register</h2>
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
@@ -43,9 +48,9 @@ const Register = () => {
       </form>
 
       {/* Link to Login Page */}
-      <div class="login_link">
+      <div className="login_link">
         <p>Already have an account?</p>
-        <a href="https://bizbill.4asolutions.com.au/users/login_user">Login</a>
+        <a href="/login">Login</a> {/* Link to frontend login page */}
       </div>
     </div>
   );
