@@ -20,25 +20,40 @@ const Login = () => {
       });
       const result = await response.json();
 
-      if(result.success){
+      if (result.success) {
         alert('Login Successful');
         localStorage.setItem('auth_token', result.token); // Save token in localStorage
-        window.location.href = '/invoice/display_invoices'; // Perform frontend redirect
+        window.location.href = '/invoice/display_invoices'; // Redirect after login
       } else {
         setError(result.message || 'Invalid email or password');
       }
-      
     } catch (error) {
       console.error('Error during login:', error);
-      alert('Login failed.');
+      setError('Login failed. Please try again.');
     }
   };
 
   return (
-    <div class="login_form_div">
-      <form class="login_form" onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+    <div className="login_form_div">
+      <form className="login_form" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        {error && <div className="error-message">{error}</div>} {/* Show error if any */}
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Login</button>
       </form>
     </div>
