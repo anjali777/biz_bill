@@ -53,8 +53,10 @@ class UsersController extends BaseController {
            // echo $token;
             $_SESSION['auth_token'] = $token;  // Store it in session for simplicity
             echo json_encode(['success' => true, 'message' => 'Login successful', 'token' => $token]);
+            exit;
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid email or password']);
+            exit;
         }
     }
     
