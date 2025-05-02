@@ -47,18 +47,19 @@ class UsersController extends BaseController {
         $model = new UsersModel();
         $user = $model->login_user($email);
     
+        header('Content-Type: application/json'); // Ensure correct header
+    
         if ($user && password_verify($password, $user['password_hash'])) {
-            // Generate a simple token (in production, use JWT or a library)
-            $token = bin2hex(random_bytes(16)); // receiving token here
-           // echo $token;
-            $_SESSION['auth_token'] = $token;  // Store it in session for simplicity
+            $token = bin2hex(random_bytes(16));
+            $_SESSION['auth_token'] = $token;
             echo json_encode(['success' => true, 'message' => 'Login successful', 'token' => $token]);
-            exit;
+            exit; // ✅ Required
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid email or password']);
-            exit;
+            exit; // ✅ Required
         }
     }
+    
     
 
     function activate_user() {
