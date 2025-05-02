@@ -47,16 +47,16 @@ class UsersController extends BaseController {
         $model = new UsersModel();
         $user = $model->login_user($email);
     
-        header('Content-Type: application/json'); // Ensure correct header
+        header('Content-Type: application/json');
     
         if ($user && password_verify($password, $user['password_hash'])) {
             $token = bin2hex(random_bytes(16));
             $_SESSION['auth_token'] = $token;
             echo json_encode(['success' => true, 'message' => 'Login successful', 'token' => $token]);
-            exit; // ✅ Required
+            exit;
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid email or password']);
-            exit; // ✅ Required
+            exit;
         }
     }
     

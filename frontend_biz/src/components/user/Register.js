@@ -39,7 +39,7 @@ const Register = () => {
   return (
     <div className="register_form_div">
       <form className="register_form" onSubmit={handleSubmit}>
-        <h2>Register</h2>
+        <h2>Registerrrrrrrrrrrrr</h2>
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
         <input type="text" name="first_name" placeholder="First Name" onChange={handleChange} required />
