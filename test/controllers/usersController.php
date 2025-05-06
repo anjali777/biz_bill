@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 
 
 class UsersController extends BaseController {
@@ -21,22 +22,28 @@ class UsersController extends BaseController {
 
     }
 
-    function register_user() {
-        echo "reaching till here";
+    public function register_user() {
+        
+        header('Content-Type: application/json');
+    
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-
+    
         require_once 'models/UsersModel.php';
         $model = new UsersModel();
-
+    
         $result = $model->register_user($data);
+    
         if ($result) {
-            echo json_encode(['success' => true, 'message' => 'Registration successful. Please verify your email.']);
-            
+            echo json_encode(['success' => true, 'message' => 'Registration successful.']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Registration failed.']);
         }
+    
+        exit; 
     }
+    
+    
 
     public function login_user() {
         $json = file_get_contents('php://input');
