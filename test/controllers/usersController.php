@@ -22,6 +22,7 @@ class UsersController extends BaseController {
     }
 
     function register_user() {
+        echo "reaching till here";
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
 
