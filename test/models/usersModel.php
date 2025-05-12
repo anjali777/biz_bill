@@ -49,6 +49,7 @@ class UsersModel extends BaseModel {
             return $sth->execute();
         } catch (Exception $e) {
             error_log("Error registering user: " . $e->getMessage());
+            echo json_encode(['success' => false, 'message' => 'Registration failed. ' . $e->getMessage()]);
             return false;
         }
     }
