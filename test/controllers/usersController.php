@@ -23,25 +23,27 @@ class UsersController extends BaseController {
     }
 
     public function register_user() {
-        
-        header('Content-Type: application/json');
-    
-        $json = file_get_contents('php://input');
-        $data = json_decode($json, true);
-    
-        require_once 'models/UsersModel.php';
-        $model = new UsersModel();
-    
-        $result = $model->register_user($data);
-    
-        if ($result) {
-            echo json_encode(['success' => true, 'message' => 'Registration successful.']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Registration failed.']);
-        }
-    
-        exit; 
+    header('Content-Type: application/json');
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    error_log("Received data in controller: " . print_r($data, true)); // Debug
+
+    require_once 'models/UsersModel.php';
+    $model = new UsersModel();
+
+    $result = $model->register_user($data);
+
+    if ($result) {
+        echo json_encode(['success' => true, 'message' => 'Registration successful.']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Registration failed.']);
     }
+
+    exit; 
+}
+
     
     
 

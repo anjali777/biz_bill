@@ -28,6 +28,8 @@ class UsersModel extends BaseModel {
 
     function register_user($data) {
         try {
+            error_log("Inside model register_user");
+            error_log("Received data: " . print_r($data, true));
             $db = BaseModel::getInstance();
             $password_hash = password_hash($data['password'], PASSWORD_BCRYPT);
             $registration_key = bin2hex(random_bytes(16)); // Generate unique registration key
@@ -46,7 +48,9 @@ class UsersModel extends BaseModel {
             $sth->bindValue(':role', 'customer');
             $sth->bindValue(':created_at', $registration_time);
 
-            return $sth->execute();
+            $executed = $sth->execute();
+            error_log("SQL Executed: " . ($executed ? "Success" : "Failure"));
+            return $executed;
         } catch (Exception $e) {
             error_log("Error registering user: " . $e->getMessage());
             echo json_encode(['success' => false, 'message' => 'Registration failed. ' . $e->getMessage()]);
