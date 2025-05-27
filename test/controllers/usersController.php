@@ -20,6 +20,11 @@ class UsersController extends BaseController {
             $this->update_user();
         } 
 
+        if (isset($_POST['btn_save_register_details'])) {
+            echo "your reached at users register function";
+            $this->register_user();
+        } 
+
     }
 
     public function register_user() {

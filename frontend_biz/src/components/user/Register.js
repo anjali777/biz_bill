@@ -44,7 +44,7 @@ const Register = () => {
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
         <input type="text" name="first_name" placeholder="First Name" onChange={handleChange} required />
         <input type="text" name="last_name" placeholder="Last Name" onChange={handleChange} required />
-        <button type="submit">Register</button>
+        <button type="submit" className="btn btn-primary" name="btn_save_register_details">Register</button>
       </form>
 
       {/* Link to Login Page */}

@@ -31,3 +31,13 @@ class HomeController extends BaseController {
 }
 
 ?>
+
+function __construct() {
+    parent::__construct();
+
+    if (isset($_SESSION['id'])) {
+        $this->home();
+    } else {
+        $this->view->render('users/create_user');
+    }
+}
