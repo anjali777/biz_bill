@@ -21,13 +21,13 @@ class UsersController extends BaseController {
         } 
 
         if (isset($_POST['btn_save_register_details'])) {
-            echo "your reached at users register function";
             $this->register_user();
         } 
 
     }
 
-    public function register_user() {
+public function register_user() {
+    error_log("Inside UsersController::register_user() method");
     header('Content-Type: application/json');
 
     $json = file_get_contents('php://input');
@@ -36,9 +36,12 @@ class UsersController extends BaseController {
     error_log("Received data in controller: " . print_r($data, true)); // Debug
 
     require_once 'models/UsersModel.php';
+    error_log("Trying to load model file...");
+
     $model = new UsersModel();
 
     $result = $model->register_user($data);
+    error_log("Model returned: " . var_export($result, true));
 
     if ($result) {
         echo json_encode(['success' => true, 'message' => 'Registration successful.']);

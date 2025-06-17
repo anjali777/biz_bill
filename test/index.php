@@ -21,6 +21,7 @@ $route = isset($_GET['rt']) ? $_GET['rt'] : 'home/index';  // Default route if n
 $route_parts = explode('/', $route);
 $controller_name = ucfirst($route_parts[0]) . 'Controller';  // Capitalize controller name
 $method_name = isset($route_parts[1]) ? $route_parts[1] : 'index';  // Default to 'index' if no method is set
+error_log("Routing: Controller - $controller_name, Method - $method_name");
 
 // Load the controller if it exists
 if (file_exists('controllers/' . $controller_name . '.php')) {

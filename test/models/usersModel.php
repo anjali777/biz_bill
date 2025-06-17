@@ -28,7 +28,7 @@ class UsersModel extends BaseModel {
 
     function register_user($data) {
         try {
-            error_log("Inside model register_user");
+            error_log("Inside UsersModel::register_user() method");
             error_log("Received data: " . print_r($data, true));
             $db = BaseModel::getInstance();
             $password_hash = password_hash($data['password'], PASSWORD_BCRYPT);
@@ -47,9 +47,10 @@ class UsersModel extends BaseModel {
             $sth->bindParam(':last_name', $data['last_name']);
             $sth->bindValue(':role', 'customer');
             $sth->bindValue(':created_at', $registration_time);
+error_log("SQL about to execute with values: " . json_encode($data));
 
             $executed = $sth->execute();
-            error_log("SQL Executed: " . ($executed ? "Success" : "Failure"));
+            error_log("Execution result: " . var_export($executed, true));
             return $executed;
         } catch (Exception $e) {
             error_log("Error registering user: " . $e->getMessage());
